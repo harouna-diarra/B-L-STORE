@@ -1,0 +1,702 @@
+// Base de Données Catalogue B&L STORE
+// Images réelles organisées dans /img/chaussures, /img/sandales, /img/parfums
+
+const ALL_PRODUCTS = [
+  // ==========================================
+  // CHAUSSURES (38 MODÈLES)
+  // ==========================================
+  {
+    id: 'c1',
+    cat: 'chaussures',
+    brand: 'nike',
+    name: "Nike Air Force 1 '07 All White",
+    price: 25000,
+    tag: 'Incontournable',
+    featured: true,
+    image: './img/chaussures/chaussure_nike1.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44, 45]
+  },
+  {
+    id: 'c2',
+    cat: 'chaussures',
+    brand: 'adidas',
+    name: 'Adidas Samba OG White & Core Black',
+    price: 55000,
+    tag: 'Best-Seller',
+    featured: true,
+    image: './img/chaussures/chaussure_addidas2.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c3',
+    cat: 'chaussures',
+    brand: 'asics',
+    name: 'Asics Gel-Kayano 14 Metallic Silver',
+    price: 32000,
+    tag: 'Tendance',
+    featured: true,
+    image: './img/chaussures/Ascics2.jpeg',
+    sizes: [40, 41, 42, 43, 44, 45]
+  },
+  {
+    id: 'c4',
+    cat: 'chaussures',
+    brand: 'jordan',
+    name: 'Air Jordan 4 Retro University Blue',
+    price: 30000,
+    tag: 'Culte',
+    featured: true,
+    image: './img/chaussures/chaussure_jordan1.jpeg',
+    sizes: [40, 41, 42, 43, 44, 45]
+  },
+  {
+    id: 'c5',
+    cat: 'chaussures',
+    brand: 'newbalance',
+    name: 'New Balance 2002R Protection Pack Rain Cloud',
+    price: 30000,
+    tag: 'Édition Spéciale',
+    featured: true,
+    image: './img/chaussures/chaussure_newbalance1.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c6',
+    cat: 'chaussures',
+    brand: 'vans',
+    name: 'Vans Knu Skool Chunky Suede Black & White',
+    price: 33000,
+    tag: 'Nouveau',
+    featured: true,
+    image: './img/chaussures/vans1.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c7',
+    cat: 'chaussures',
+    brand: 'nike',
+    name: 'Nike Dunk Low Coast Blue & White',
+    price: 30000,
+    tag: 'Populaire',
+    featured: true,
+    image: './img/chaussures/chaussure_nike2.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c8',
+    cat: 'chaussures',
+    brand: 'nike',
+    name: 'Nike Air Max Plus TN Triple Black',
+    price: 30000,
+    tag: 'Best-Seller',
+    featured: true,
+    image: './img/chaussures/chaussure_nike4.jpeg',
+    sizes: [40, 41, 42, 43, 44, 45]
+  },
+  {
+    id: 'c9',
+    cat: 'chaussures',
+    brand: 'asics',
+    name: 'Asics Gel-NYC Cream & Oyster Grey',
+    price: 30000,
+    tag: 'Nouveau',
+    featured: false,
+    image: './img/chaussures/Ascics1.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c10',
+    cat: 'chaussures',
+    brand: 'asics',
+    name: 'Asics Gel-NYC Pure Silver & Blue',
+    price: 30000,
+    tag: 'Tendance',
+    featured: false,
+    image: './img/chaussures/Ascics3.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c11',
+    cat: 'chaussures',
+    brand: 'asics',
+    name: 'Asics GT-2160 White & Pure Silver',
+    price: 30000,
+    tag: 'Running Chic',
+    featured: false,
+    image: './img/chaussures/chaussure_ascics1.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c12',
+    cat: 'chaussures',
+    brand: 'asics',
+    name: 'Asics Gel-1130 White & Midnight Navy',
+    price: 30000,
+    tag: 'Confort',
+    featured: false,
+    image: './img/chaussures/chaussure_ascics2.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c13',
+    cat: 'chaussures',
+    brand: 'asics',
+    name: 'Asics Gel-Nimbus Triple Black',
+    price: 30000,
+    tag: 'Discret',
+    featured: false,
+    image: './img/chaussures/chaussure_ascics3.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c14',
+    cat: 'chaussures',
+    brand: 'asics',
+    name: 'Asics Gel-Sonoma 15-50 Trail Edition',
+    price: 32000,
+    tag: 'Outdoor',
+    featured: false,
+    image: './img/chaussures/chaussure_ascics4.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c15',
+    cat: 'chaussures',
+    brand: 'asics',
+    name: 'Asics Gel-Kayano Legacy Multi-Color',
+    price: 32000,
+    tag: 'Performance',
+    featured: false,
+    image: './img/chaussures/chaussure_ascics5.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c16',
+    cat: 'chaussures',
+    brand: 'adidas',
+    name: 'Adidas Campus 00s Core Black & White',
+    price: 55000,
+    tag: 'Ultra Tendance',
+    featured: false,
+    image: './img/chaussures/chaussure_addidas1.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c17',
+    cat: 'chaussures',
+    brand: 'adidas',
+    name: 'Adidas Gazelle Indoor Green & Gum',
+    price: 55000,
+    tag: 'Rétro Vintage',
+    featured: false,
+    image: './img/chaussures/chaussure_addidas3.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c18',
+    cat: 'chaussures',
+    brand: 'adidas',
+    name: 'Adidas Superstar Classic White & Black',
+    price: 25000,
+    tag: 'Classique',
+    featured: false,
+    image: './img/chaussures/chaussure_addidas4.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c19',
+    cat: 'chaussures',
+    brand: 'adidas',
+    name: 'Adidas Campus 00s Grey Cloud White',
+    price: 30000,
+    tag: 'Skate Chic',
+    featured: false,
+    image: './img/chaussures/chaussure_addidas5.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c20',
+    cat: 'chaussures',
+    brand: 'adidas',
+    name: 'Adidas Handball Spezial Night Navy',
+    price: 32000,
+    tag: 'Tendance',
+    featured: false,
+    image: './img/chaussures/chaussure_addidas6.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c21',
+    cat: 'chaussures',
+    brand: 'adidas',
+    name: 'Adidas Samba All Black Stealth Edition',
+    price: 32000,
+    tag: 'Épuré',
+    featured: false,
+    image: './img/chaussures/chaussure_addidas7.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c22',
+    cat: 'chaussures',
+    brand: 'newbalance',
+    name: 'New Balance 9060 Sea Salt & Crisp White',
+    price: 32000,
+    tag: 'Chunky',
+    featured: false,
+    image: './img/chaussures/chaussure_newbalance2.jpeg',
+    sizes: [40, 41, 42, 43, 44, 45]
+  },
+  {
+    id: 'c23',
+    cat: 'chaussures',
+    brand: 'nike',
+    name: 'Nike Air Max 95 OG Black & Gold Accent',
+    price: 32000,
+    tag: 'Streetwear',
+    featured: false,
+    image: './img/chaussures/chaussure_nike3.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c24',
+    cat: 'chaussures',
+    brand: 'nike',
+    name: 'Nike Dunk Low Retro Panda Black & White',
+    price: 30000,
+    tag: 'Best-Seller',
+    featured: false,
+    image: './img/chaussures/chaussure_nike5.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c25',
+    cat: 'chaussures',
+    brand: 'nike',
+    name: 'Nike Air Jordan 1 Low White & Wolf Grey',
+    price: 30000,
+    tag: 'Élégant',
+    featured: false,
+    image: './img/chaussures/chaussure_nike6.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c26',
+    cat: 'chaussures',
+    brand: 'nike',
+    name: 'Nike Air Max Plus TN Gradient Blue Sky',
+    price: 32000,
+    tag: 'Iconique',
+    featured: false,
+    image: './img/chaussures/chaussure_nikeTn1.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c27',
+    cat: 'chaussures',
+    brand: 'nike',
+    name: 'Nike Air Max Plus TN Sunset Orange',
+    price: 32000,
+    tag: 'Énergie',
+    featured: false,
+    image: './img/chaussures/chaussure_nikeTn2.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c28',
+    cat: 'chaussures',
+    brand: 'vans',
+    name: 'Vans Old Skool Classic Black & White',
+    price: 33000,
+    tag: 'Skate Rétro',
+    featured: false,
+    image: './img/chaussures/chaussure_vans.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c29',
+    cat: 'chaussures',
+    brand: 'vans',
+    name: 'Vans Half Cab Pro Mid Suede Black',
+    price: 33000,
+    tag: 'Authentique',
+    featured: false,
+    image: './img/chaussures/vans2.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c30',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Timberland 6-Inch Premium Boot Wheat Nubuck',
+    price: 45000,
+    tag: 'Robuste & Luxe',
+    featured: false,
+    image: './img/chaussures/chaussure_timber.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c31',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Sneaker Designer Style Dolce & Gabbana',
+    price: 55000,
+    tag: 'Haute Gamme',
+    featured: false,
+    image: './img/chaussures/chaussure_DG.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c32',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Sneaker Street Minimaliste All Black',
+    price: 25000,
+    tag: 'Polyvalent',
+    featured: false,
+    image: './img/chaussures/chaussure.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c33',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Sneaker Runner Sport White & Light Grey',
+    price: 28000,
+    tag: 'Confort Quotidien',
+    featured: false,
+    image: './img/chaussures/chaussure1.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c34',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Sneaker Urban Chic White Platform',
+    price: 28000,
+    tag: 'Mode',
+    featured: false,
+    image: './img/chaussures/chaussure2.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c35',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Mocassin Cuir Noir Prestige B&L',
+    price: 35000,
+    tag: 'Soirée & Affaires',
+    featured: false,
+    image: './img/chaussures/chaussure3.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c36',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Sneaker High-Top Retro Crimson Red',
+    price: 32000,
+    tag: 'Sportswear',
+    featured: false,
+    image: './img/chaussures/chaussure4.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c37',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Sneaker Casual Sport Graphite',
+    price: 28000,
+    tag: 'Trendy',
+    featured: false,
+    image: './img/chaussures/chaussure5.jpeg',
+    sizes: [40, 41, 42, 43, 44]
+  },
+  {
+    id: 'c38',
+    cat: 'chaussures',
+    brand: 'luxe',
+    name: 'Sneaker Low Classic Monochrome',
+    price: 21000,
+    tag: 'Prix Doux',
+    featured: false,
+    image: './img/chaussures/chaussure_.jpeg',
+    sizes: [39, 40, 41, 42, 43]
+  },
+
+  // ==========================================
+  // SANDALES & CROCS (8 MODÈLES)
+  // ==========================================
+  {
+    id: 's1',
+    cat: 'sandales',
+    type: 'crocs',
+    name: 'Crocs Classic Clog Sand & Camel',
+    price: 25000,
+    tag: 'Best-Seller',
+    featured: true,
+    image: './img/sandales/crocks1.jpeg',
+    sizes: [38, 39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 's2',
+    cat: 'sandales',
+    type: 'crocs',
+    name: 'Crocs All-Terrain Clog Slate Grey',
+    price: 28000,
+    tag: 'Nouveau',
+    featured: true,
+    image: './img/sandales/crocks2.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 's3',
+    cat: 'sandales',
+    type: 'crocs',
+    name: 'Crocs Classic Clog Triple Black',
+    price: 25000,
+    tag: 'Indispensable',
+    featured: true,
+    image: './img/sandales/crocks3.jpeg',
+    sizes: [38, 39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 's4',
+    cat: 'sandales',
+    type: 'crocs',
+    name: 'Crocs Echo Clog Desert Sand & Tan',
+    price: 32000,
+    tag: 'Design Moderne',
+    featured: true,
+    image: './img/sandales/crocks5.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 's5',
+    cat: 'sandales',
+    type: 'crocs',
+    name: 'Crocs Off-Grid Clog Pure White',
+    price: 28000,
+    tag: 'Confort Ultime',
+    featured: false,
+    image: './img/sandales/crocks4.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 's6',
+    cat: 'sandales',
+    type: 'crocs',
+    name: 'Crocs Pollex Clog Wave Collector',
+    price: 35000,
+    tag: 'Édition Spéciale',
+    featured: false,
+    image: './img/sandales/crocks6.jpeg',
+    sizes: [39, 40, 41, 42, 43, 44]
+  },
+  {
+    id: 's7',
+    cat: 'sandales',
+    type: 'mules',
+    name: 'Mules & Pantoufles Velvet Confort B&L',
+    price: 22000,
+    tag: 'Détente Luxe',
+    featured: false,
+    image: './img/sandales/pantoufles.jpeg',
+    sizes: [38, 39, 40, 41, 42, 43]
+  },
+  {
+    id: 's8',
+    cat: 'sandales',
+    type: 'ballerine',
+    name: 'Ballerine Cuir Souple Élégance B&L',
+    price: 26000,
+    tag: 'Féminin & Chic',
+    featured: false,
+    image: './img/sandales/balerine1.jpeg',
+    sizes: [37, 38, 39, 40, 41]
+  },
+
+  // ==========================================
+  // PARFUMS & FRAGRANCES (15 PARFUMS)
+  // ==========================================
+  {
+    id: 'p1',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — GHOST',
+    note: 'Inspiré de Black Phantom',
+    price: 15000,
+    tag: 'Best-Seller',
+    featured: true,
+    image: './img/parfums/P1.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p2',
+    cat: 'parfums',
+    subcat: 'doree',
+    name: 'Collection La Dorée — BACCARAT',
+    note: 'Inspiré de Baccarat Rouge 540',
+    price: 15000,
+    tag: 'Prestige',
+    featured: true,
+    image: './img/parfums/P8.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p3',
+    cat: 'parfums',
+    subcat: 'doree',
+    name: 'Collection La Dorée — AÏSHA',
+    note: 'Fragrance Royale Ambrée',
+    price: 15000,
+    tag: 'Incontournable',
+    featured: true,
+    image: './img/parfums/P10.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p4',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — AVENTUS',
+    note: "Inspiré d'Aventus de Creed",
+    price: 15000,
+    tag: 'Mythique',
+    featured: true,
+    image: './img/parfums/P11.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p5',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — GRIS',
+    note: 'Inspiré de Gris Dior',
+    price: 15000,
+    tag: 'Élégance Pure',
+    featured: true,
+    image: './img/parfums/P6.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p6',
+    cat: 'parfums',
+    subcat: 'intense',
+    name: 'Collection Privée — LIBRE Édition Intense',
+    note: 'Inspiré de Libre YSL',
+    price: 15000,
+    tag: 'Intense',
+    featured: true,
+    image: './img/parfums/P13.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p7',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — ILHAM',
+    note: "Inspiré d'Ilham So Oud",
+    price: 15000,
+    tag: 'Oriental Envoûtant',
+    featured: false,
+    image: './img/parfums/P2.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p8',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — PARISIEN',
+    note: 'Inspiré de Scandal Homme',
+    price: 15000,
+    tag: 'Séduction',
+    featured: false,
+    image: './img/parfums/P3.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p9',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — MULA',
+    note: 'Inspiré de Mula Mula Byron',
+    price: 15000,
+    tag: 'Gourmandise Sublime',
+    featured: false,
+    image: './img/parfums/P4.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p10',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — KRYPTON',
+    note: 'Inspiré de Kryptonite',
+    price: 15000,
+    tag: 'Frais & Boisé',
+    featured: false,
+    image: './img/parfums/P5.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p11',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — KALIMAT',
+    note: 'Inspiré de Kalemat Arabian Oud',
+    price: 15000,
+    tag: 'Ambré Solaire',
+    featured: false,
+    image: './img/parfums/P7.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p12',
+    cat: 'parfums',
+    subcat: 'privee',
+    name: 'Collection Privée — BLEU',
+    note: 'Inspiré de Bleu de Chanel',
+    price: 15000,
+    tag: 'Magnétique',
+    featured: false,
+    image: './img/parfums/P9.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p13',
+    cat: 'parfums',
+    subcat: 'intense',
+    name: 'Collection Privée — VIE Édition Intense',
+    note: 'Inspiré de La Vie Est Belle',
+    price: 15000,
+    tag: 'Floral Lumineux',
+    featured: false,
+    image: './img/parfums/P12.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p14',
+    cat: 'parfums',
+    subcat: 'intense',
+    name: 'Collection Privée — MISS Édition Intense',
+    note: 'Inspiré de Miss Dior',
+    price: 15000,
+    tag: 'Floral Romantique',
+    featured: false,
+    image: './img/parfums/P14.jpeg',
+    sizes: ['50ml', '100ml']
+  },
+  {
+    id: 'p15',
+    cat: 'parfums',
+    subcat: 'intense',
+    name: 'Collection Privée — MISS Flacon & Écrin Luxe',
+    note: 'Coffret Prestige & Écrin',
+    price: 15000,
+    tag: 'Coffret Cadeau',
+    featured: false,
+    image: './img/parfums/P15.jpeg',
+    sizes: ['100ml + Écrin']
+  }
+];

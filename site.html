@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B&L STORE — La mode à portée de clic | Chaussures, Sandales & Parfums</title>
+  <meta name="description"
+    content="Découvrez B&L STORE : chaussures de marque, sandales tendance et parfums d'exception. Livraison rapide et paiement sécurisé.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="top-bar">
+    <span>✨ LIVRAISON RAPIDE PARTOUT AU SÉNÉGAL</span>
+    <span class="code">CODE: BL10 (-10%)</span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="site.html" class="brand-logo-link">
+        <div class="brand-badge">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M25 25 H50 C65 25 65 45 50 45 C65 45 65 75 25 75 H50" stroke="url(#goldGrad)" stroke-width="8"
+              stroke-linecap="round" fill="none" />
+            <path d="M55 35 L75 75 H85" stroke="url(#goldGrad)" stroke-width="8" stroke-linecap="round" fill="none" />
+            <circle cx="50" cy="50" r="44" stroke="url(#goldGrad)" stroke-width="3" fill="none" />
+            <defs>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="100" y2="100">
+                <stop offset="0%" stop-color="#f3e5ab" />
+                <stop offset="50%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#aa841e" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name">B&L STORE</span>
+          <span class="brand-tagline">LA MODE À PORTÉE DE CLIC</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="main-nav">
+        <a href="site.html" class="nav-link active">Accueil</a>
+        <a href="chaussures.html" class="nav-link">👟 Chaussures</a>
+        <a href="sandales.html" class="nav-link">🩴 Sandales</a>
+        <a href="parfums.html" class="nav-link">✨ Parfums</a>
+      </nav>
+
+      <!-- Live Search Bar -->
+      <div class="header-search">
+        <div class="search-input-wrapper">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+          </svg>
+          <input type="text" id="searchInput" placeholder="Rechercher une chaussure, parfum..."
+            oninput="handleHomeSearch(this.value)">
+          <button class="clear-search-btn" id="clearSearchBtn" onclick="clearHomeSearch()">✕</button>
+        </div>
+      </div>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button class="action-btn" onclick="openWishlistDrawer()" title="Favoris">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+          <span class="badge-count" id="wishlistCount">0</span>
+        </button>
+        <button class="action-btn" onclick="openCartDrawer()" title="Panier">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+          <span class="badge-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-tag">✨ Nouvelle Collection 2026</div>
+        <h1><span>B&L STORE</span><br>L'Élégance à portée de clic</h1>
+        <p>Découvrez notre sélection exclusive de sneakers tendance, de sandales tout confort et les prestigieuses fragrances de la Collection Privée Paris.</p>
+        <div class="hero-ctas">
+          <a href="chaussures.html" class="btn-gold">👟 Voir les Chaussures ➔</a>
+          <a href="parfums.html" class="btn-outline">✨ Collection Parfums</a>
+          <a href="sandales.html" class="btn-outline">🩴 Sandales & Crocs</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-logo-frame">
+          <svg width="140" height="140" viewBox="0 0 100 100" fill="none">
+            <path d="M25 25 H50 C65 25 65 45 50 45 C65 45 65 75 25 75 H50" stroke="url(#heroGold)" stroke-width="7"
+              stroke-linecap="round" />
+            <path d="M55 35 L75 75 H85" stroke="url(#heroGold)" stroke-width="7" stroke-linecap="round" />
+            <circle cx="50" cy="50" r="44" stroke="url(#heroGold)" stroke-width="2" />
+            <defs>
+              <linearGradient id="heroGold" x1="0" y1="0" x2="100" y2="100">
+                <stop offset="0%" stop-color="#f3e5ab" />
+                <stop offset="50%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#aa841e" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span
+            style="font-family:var(--font-heading); font-size:22px; font-weight:800; color:var(--gold-light); margin-top:12px; letter-spacing:0.1em;">B&L
+            STORE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="trust-bar">
+    <div class="trust-container">
+      <div class="trust-card">
+        <div class="trust-icon">💎</div>
+        <div class="trust-info">
+          <h4>Qualité Garantie</h4>
+          <p>Articles rigoureusement sélectionnés</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🔒</div>
+        <div class="trust-info">
+          <h4>Paiement Sécurisé</h4>
+          <p>Wave, Orange Money & Livraison</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">⚡</div>
+        <div class="trust-info">
+          <h4>Livraison Rapide</h4>
+          <p>Dakar & expédition en régions</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🛡️</div>
+        <div class="trust-info">
+          <h4>Service Client 7j/7</h4>
+          <p>Assistance directe sur WhatsApp</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Showcase Container -->
+  <main>
+    <!-- Section 1 : Chaussures Essentielles -->
+    <section class="section-wrapper" id="section-chaussures">
+      <div class="section-head-wrap">
+        <div class="section-head-info">
+          <h2>👟 Les Chaussures Essentielles</h2>
+          <p>Notre sélection des modèles incontournables les plus demandés du moment.</p>
+        </div>
+        <a href="chaussures.html" class="btn-view-all">Voir toutes les chaussures (38 modèles) ➔</a>
+      </div>
+      <div class="products-grid" id="homeShoesGrid"></div>
+    </section>
+
+    <!-- Section 2 : Sandales & Crocs -->
+    <section class="section-wrapper" id="section-sandales">
+      <div class="section-head-wrap">
+        <div class="section-head-info">
+          <h2>🩴 Sélection Sandales & Crocs</h2>
+          <p>Le confort absolu et le design moderne pour vos moments décontractés.</p>
+        </div>
+        <a href="sandales.html" class="btn-view-all">Voir toutes les sandales (8 modèles) ➔</a>
+      </div>
+      <div class="products-grid" id="homeSandalesGrid"></div>
+    </section>
+
+    <!-- Section 3 : Parfums Collection Privée -->
+    <section class="section-wrapper" id="section-parfums">
+      <div class="section-head-wrap">
+        <div class="section-head-info">
+          <h2>✨ Parfums — Collection Privée Paris</h2>
+          <p>Des fragrances d'exception inspirées des plus grands chefs-d'œuvre olfactifs.</p>
+        </div>
+        <a href="parfums.html" class="btn-view-all">Découvrir les 15 parfums de luxe ➔</a>
+      </div>
+      <div class="products-grid" id="homeParfumsGrid"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div
+          style="font-family:var(--font-heading); font-size:22px; font-weight:800; color:var(--gold-light); margin-bottom:12px;">
+          B&L STORE</div>
+        <p>Votre boutique d'exception pour chaussures de marque, sandales tendance et parfums de prestige.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Votre email..." id="newsletterEmail">
+          <button onclick="subscribeNewsletter()">S'inscrire</button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Nos Rayons</h5>
+        <ul>
+          <li><a href="chaussures.html">👟 Chaussures de marque (38 modèles)</a></li>
+          <li><a href="sandales.html">🩴 Sandales & Crocs (8 modèles)</a></li>
+          <li><a href="parfums.html">✨ Collection Privée Parfums (15 parfums)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Aide & Support</h5>
+        <ul>
+          <li><a href="#">Guide des pointures</a></li>
+          <li><a href="#">Livraison & Délais</a></li>
+          <li><a href="https://wa.me/" target="_blank">Commander sur WhatsApp</a></li>
+          <li><a href="#">Conditions de retour</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact & Réseaux</h5>
+        <p>📷 Instagram: <strong>@BL_STORE</strong></p>
+        <p>🛍️ Boutique: <strong>B&L STORE Dakar</strong></p>
+        <p>💬 Support direct WhatsApp disponible</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 B&L STORE. Tous droits réservés.</span>
+      <div class="payment-tags">
+        <span class="pay-tag">🌊 Wave</span>
+        <span class="pay-tag">🍊 Orange Money</span>
+        <span class="pay-tag">💵 Paiement à la livraison</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="product-modal">
+      <button class="modal-close-btn" onclick="closeProductModal()">✕</button>
+      <div class="modal-img-col" id="modalImgCol"></div>
+      <div class="modal-info-col">
+        <span class="modal-cat-tag" id="modalCatTag">CATEGORIE</span>
+        <h3 class="modal-title" id="modalTitle">Titre du Produit</h3>
+        <div class="modal-price" id="modalPrice">0 FCFA</div>
+
+        <span class="option-label" id="modalOptionLabel">Sélectionnez la pointure</span>
+        <div class="size-picker" id="modalSizePicker"></div>
+
+        <span class="option-label">Quantité</span>
+        <div class="qty-picker">
+          <button class="qty-btn" onclick="changeQty(-1)">-</button>
+          <span class="qty-val" id="modalQtyVal">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+
+        <div class="modal-cta-group">
+          <button class="btn-gold" style="flex:1; justify-content:center;" onclick="addModalItemToCart()">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Side Drawer -->
+  <div class="drawer-panel" id="cartDrawer">
+    <div class="drawer-header">
+      <h3>Mon Panier (<span id="cartDrawerCount">0</span>)</h3>
+      <button class="modal-close-btn" onclick="closeCartDrawer()">✕</button>
+    </div>
+    <div class="drawer-body" id="cartDrawerBody"></div>
+    <div class="drawer-footer">
+      <div class="coupon-box">
+        <input type="text" id="couponInput" placeholder="Code promo (ex: BL10)">
+        <button onclick="applyCoupon()">Appliquer</button>
+      </div>
+      <div class="summary-row">
+        <span>Sous-total:</span>
+        <span id="subtotalVal">0 FCFA</span>
+      </div>
+      <div class="summary-row" id="discountRow" style="display:none; color:var(--gold-light);">
+        <span>Réduction (-10%):</span>
+        <span id="discountVal">-0 FCFA</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total:</span>
+        <span id="totalVal">0 FCFA</span>
+      </div>
+      <button class="btn-checkout" onclick="openCheckoutModal()">Passer la commande ➔</button>
+    </div>
+  </div>
+
+  <!-- Checkout Form Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="checkout-modal">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h3 style="color:var(--gold-light); font-size:22px;">Finaliser votre commande</h3>
+        <button class="modal-close-btn" onclick="closeCheckoutModal()" style="position:static;">✕</button>
+      </div>
+      <form onsubmit="submitOrder(event)">
+        <div class="form-group">
+          <label>Nom complet *</label>
+          <input type="text" required placeholder="Ex: Moussa Diop" id="custName">
+        </div>
+        <div class="form-group">
+          <label>Numéro de Téléphone (WhatsApp) *</label>
+          <input type="tel" required placeholder="Ex: +221 77 000 00 00" id="custPhone">
+        </div>
+        <div class="form-group">
+          <label>Adresse de livraison complète *</label>
+          <input type="text" required placeholder="Ex: Dakar, Sacré-Cœur 3, Immeuble A" id="custAddress">
+        </div>
+        <div class="form-group">
+          <label>Moyen de Paiement *</label>
+          <div class="payment-options">
+            <div class="pay-option selected" onclick="selectPayment('wave', this)">🌊 Wave</div>
+            <div class="pay-option" onclick="selectPayment('om', this)">🍊 Orange Money</div>
+            <div class="pay-option" onclick="selectPayment('cod', this)">💵 À la livraison</div>
+            <div class="pay-option" onclick="selectPayment('card', this)">💳 Carte Bancaire</div>
+          </div>
+        </div>
+        <button type="submit" class="btn-checkout" style="margin-top:20px;">Confirmer la commande sur WhatsApp ➔</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="products.js"></script>
+  <script src="store.js"></script>
+  <script>
+    let homeSearchQuery = '';
+
+    function renderCurrentPageProducts() {
+      const shoesGrid = document.getElementById('homeShoesGrid');
+      const sandalesGrid = document.getElementById('homeSandalesGrid');
+      const parfumsGrid = document.getElementById('homeParfumsGrid');
+
+      const filterBySearch = (items) => {
+        if (!homeSearchQuery) return items;
+        return items.filter(p => 
+          p.name.toLowerCase().includes(homeSearchQuery) || 
+          (p.note && p.note.toLowerCase().includes(homeSearchQuery)) ||
+          (p.brand && p.brand.toLowerCase().includes(homeSearchQuery))
+        );
+      };
+
+      if (shoesGrid) {
+        const featuredShoes = filterBySearch(ALL_PRODUCTS.filter(p => p.cat === 'chaussures' && p.featured));
+        shoesGrid.innerHTML = featuredShoes.length > 0 
+          ? featuredShoes.map(p => renderProductCardHTML(p)).join('')
+          : '<p class="no-products">Aucune chaussure trouvée pour cette recherche.</p>';
+      }
+
+      if (sandalesGrid) {
+        const featuredSandales = filterBySearch(ALL_PRODUCTS.filter(p => p.cat === 'sandales' && p.featured));
+        sandalesGrid.innerHTML = featuredSandales.length > 0
+          ? featuredSandales.map(p => renderProductCardHTML(p)).join('')
+          : '<p class="no-products">Aucune sandale trouvée pour cette recherche.</p>';
+      }
+
+      if (parfumsGrid) {
+        const featuredParfums = filterBySearch(ALL_PRODUCTS.filter(p => p.cat === 'parfums' && p.featured));
+        parfumsGrid.innerHTML = featuredParfums.length > 0
+          ? featuredParfums.map(p => renderProductCardHTML(p)).join('')
+          : '<p class="no-products">Aucun parfum trouvé pour cette recherche.</p>';
+      }
+    }
+
+    function handleHomeSearch(val) {
+      homeSearchQuery = val.trim().toLowerCase();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.classList.toggle('active', homeSearchQuery.length > 0);
+      renderCurrentPageProducts();
+    }
+
+    function clearHomeSearch() {
+      const input = document.getElementById('searchInput');
+      if (input) input.value = '';
+      homeSearchQuery = '';
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.classList.remove('active');
+      renderCurrentPageProducts();
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCurrentPageProducts();
+    });
+  </script>
+</body>
+
+</html>
