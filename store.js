@@ -1,6 +1,10 @@
 // Logique Partagée B&L STORE : Panier, Favoris, Modales & WhatsApp
 // Synchronisation multi-pages via localStorage
 
+// Configuration WhatsApp B&L STORE
+const WHATSAPP_NUMBER = '221761706978';
+const WHATSAPP_DISPLAY = '+221 76 170 69 78';
+
 // État Global
 let cart = [];
 let wishlist = new Set();
@@ -15,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadStoredData();
   updateCartUI();
   updateWishlistUI();
+  injectWhatsAppFloatingWidget();
 });
 
 // Charger Panier et Wishlist depuis localStorage
@@ -82,6 +87,22 @@ function renderProductCardHTML(p) {
   </div>`;
 }
 
+// Commande directe WhatsApp pour une carte produit
+function quickOrderWhatsApp(id) {
+  const p = ALL_PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  const catOption = p.cat === 'parfums' ? 'Contenance standard' : (p.sizes && p.sizes.length ? `Pointure: ${p.sizes[0]}` : '');
+  const msg = `*COMMANDE B&L STORE*\n\n` +
+    `Bonjour B&L STORE, je souhaite commander cet article :\n` +
+    `• *Produit:* ${p.name}\n` +
+    `• *Prix:* ${p.price.toLocaleString('fr-FR')} FCFA\n` +
+    (catOption ? `• *Option:* ${catOption}\n\n` : '\n') +
+    `Pouvez-vous me confirmer la disponibilité et planifier la livraison svp ?`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  showToast('Ouverture de WhatsApp pour commander...');
+}
+
 // Modal Détails Produit
 function openProductModal(id) {
   activeModalProduct = ALL_PRODUCTS.find(p => p.id === id);
@@ -140,6 +161,24 @@ function changeQty(delta) {
 function closeProductModal() {
   const modal = document.getElementById('productModal');
   if (modal) modal.classList.remove('active');
+}
+
+// Commande directe WhatsApp depuis la modale produit
+function orderModalItemDirectWhatsApp() {
+  if (!activeModalProduct) return;
+  const sizeLabel = activeModalProduct.cat === 'parfums' ? 'Contenance' : 'Pointure';
+  const totalPrice = (activeModalProduct.price * activeModalQty).toLocaleString('fr-FR');
+  const msg = `*COMMANDE DIRECTE B&L STORE*\n\n` +
+    `Bonjour B&L STORE, je souhaite commander cet article :\n` +
+    `• *Article:* ${activeModalProduct.name}\n` +
+    `• *${sizeLabel}:* ${activeModalSize}\n` +
+    `• *Quantité:* ${activeModalQty}\n` +
+    `• *Prix total:* ${totalPrice} FCFA\n\n` +
+    `Pouvez-vous me confirmer la disponibilité et planifier la livraison à mon adresse svp ?`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  closeProductModal();
+  showToast('Redirection vers WhatsApp pour valider votre commande...');
 }
 
 // Ajout Rapide
@@ -248,10 +287,6 @@ function toggleWishlist(id) {
   saveWishlist();
   updateWishlistUI();
 
-  // Actualiser l'état visuel du bouton sur la page actuelle
-  document.querySelectorAll(`.wishlist-btn`).forEach(btn => {
-    // Si la fonction est appelée on peut re-rendre la grille de la page active
-  });
   if (typeof renderCurrentPageProducts === 'function') {
     renderCurrentPageProducts();
   }
@@ -282,6 +317,29 @@ function applyCoupon() {
   } else {
     showToast('❌ Code promo invalide.');
   }
+}
+
+// Envoi direct du panier vers WhatsApp
+function directCartWhatsAppOrder() {
+  if (cart.length === 0) {
+    showToast('Votre panier est vide.');
+    return;
+  }
+  const subtotal = cart.reduce((acc, i) => acc + (i.product.price * i.qty), 0);
+  const discount = appliedDiscount ? Math.round(subtotal * 0.1) : 0;
+  const total = subtotal - discount;
+
+  const itemsSummary = cart.map(i => `• ${i.product.name} (${i.product.cat === 'parfums' ? 'Contenance' : 'Pointure'}: ${i.size}, Qté: ${i.qty}) — ${(i.product.price * i.qty).toLocaleString('fr-FR')} FCFA`).join('\n');
+  const promoText = appliedDiscount ? `\n*Code promo BL10 appliqué:* -${discount.toLocaleString('fr-FR')} FCFA` : '';
+
+  const msg = `*COMMANDE PANIER B&L STORE*\n\n` +
+    `Bonjour B&L STORE, je souhaite valider les articles de mon panier :\n\n` +
+    `${itemsSummary}${promoText}\n\n` +
+    `*Total estimé:* ${total.toLocaleString('fr-FR')} FCFA\n\n` +
+    `Pouvez-vous prendre en charge ma commande et me donner les modalités de livraison svp ?`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  showToast('Transmission de votre panier vers WhatsApp...');
 }
 
 // Tunnel de commande Checkout
@@ -317,23 +375,26 @@ function submitOrder(e) {
   const total = subtotal - discount;
 
   const itemsSummary = cart.map(i => `• ${i.product.name} (${i.product.cat === 'parfums' ? 'Contenance' : 'Pointure'}: ${i.size}, Qté: ${i.qty}) — ${(i.product.price * i.qty).toLocaleString('fr-FR')} FCFA`).join('\n');
-  const msg = `*NOUVELLE COMMANDE B&L STORE*\n\n` +
+  const promoText = appliedDiscount ? `\n*Réduction Code BL10 (-10%):* -${discount.toLocaleString('fr-FR')} FCFA` : '';
+
+  const msg = `*NOUVELLE COMMANDE B&L STORE* 🛍️\n\n` +
     `*Client:* ${name}\n` +
     `*Téléphone:* ${phone}\n` +
     `*Adresse de livraison:* ${address}\n` +
     `*Moyen de Paiement:* ${selectedPayment.toUpperCase()}\n\n` +
-    `*Articles commandés:*\n${itemsSummary}\n\n` +
-    `*Total à régler:* ${total.toLocaleString('fr-FR')} FCFA`;
+    `*Articles commandés:*\n${itemsSummary}${promoText}\n\n` +
+    `*Total à régler:* ${total.toLocaleString('fr-FR')} FCFA\n\n` +
+    `Merci de me confirmer la commande et le délai de livraison !`;
 
   const encoded = encodeURIComponent(msg);
-  window.open(`https://wa.me/?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
 
   cart = [];
   appliedDiscount = false;
   saveCart();
   updateCartUI();
   closeCheckoutModal();
-  showToast('🎉 Merci ! Votre commande a été transmise sur WhatsApp.');
+  showToast(`🎉 Redirection vers WhatsApp (${WHATSAPP_DISPLAY}) !`);
 }
 
 function subscribeNewsletter() {
@@ -363,3 +424,27 @@ function showToast(msg) {
     setTimeout(() => toast.remove(), 300);
   }, 3000);
 }
+
+// Widget Flottant WhatsApp interactif
+function injectWhatsAppFloatingWidget() {
+  if (document.getElementById('blFloatingWhatsApp')) return;
+  const widget = document.createElement('a');
+  widget.id = 'blFloatingWhatsApp';
+  widget.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Bonjour B&L STORE, je souhaite passer une commande ou avoir des renseignements.")}`;
+  widget.target = '_blank';
+  widget.className = 'floating-wa-btn';
+  widget.setAttribute('aria-label', `Commander sur WhatsApp ${WHATSAPP_DISPLAY}`);
+  widget.innerHTML = `
+    <div class="floating-wa-content">
+      <span class="floating-wa-icon">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.03C9.36 7.03 9.09 7.09 8.87 7.33C8.65 7.57 8.02 8.16 8.02 9.36C8.02 10.56 8.9 11.72 9.02 11.89C9.14 12.05 10.73 14.5 13.17 15.56C13.75 15.81 14.2 15.96 14.56 16.07C15.14 16.26 15.67 16.23 16.09 16.17C16.55 16.1 17.52 15.58 17.72 15.01C17.93 14.44 17.93 13.96 17.87 13.86C17.81 13.76 17.65 13.7 17.41 13.58C17.17 13.46 15.99 12.88 15.77 12.8C15.55 12.72 15.39 12.68 15.23 12.92C15.07 13.16 14.6 13.7 14.46 13.86C14.32 14.02 14.18 14.04 13.94 13.92C13.7 13.8 12.69 13.47 11.49 12.4C10.56 11.57 9.93 10.55 9.81 10.35C9.69 10.15 9.8 10.04 9.92 9.92C10.03 9.81 10.17 9.62 10.29 9.48C10.41 9.34 10.45 9.24 10.53 9.08C10.61 8.92 10.57 8.78 10.51 8.66C10.45 8.54 9.98 7.37 9.78 6.9C9.59 6.43 9.39 6.5 9.24 6.5C9.1 6.5 8.94 6.5 8.78 6.5L9.53 7.03Z"/>
+        </svg>
+      </span>
+      <span class="floating-wa-badge"></span>
+      <span class="floating-wa-label">Commander sur WhatsApp</span>
+    </div>
+  `;
+  document.body.appendChild(widget);
+}
+

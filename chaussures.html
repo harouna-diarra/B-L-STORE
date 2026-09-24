@@ -19,8 +19,9 @@
 
   <!-- Announcement Bar -->
   <div class="top-bar">
-    <span>✨ LIVRAISON RAPIDE PARTOUT AU SÉNÉGAL</span>
+    <span>✨ COMMANDES WHATSAPP 7J/7 : <a href="https://wa.me/221761706978" target="_blank" style="text-decoration:underline; font-weight:800; color:#fff;">+221 76 170 69 78</a></span>
     <span class="code">CODE: BL10 (-10%)</span>
+    <span style="opacity:0.9;">🚚 Livraison express Dakar & Régions</span>
   </div>
 
   <!-- Header -->
@@ -71,6 +72,12 @@
 
       <!-- Header Actions -->
       <div class="header-actions">
+        <a href="https://wa.me/221761706978" target="_blank" class="header-wa-btn" title="Commander sur WhatsApp">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.03C9.36 7.03 9.09 7.09 8.87 7.33C8.65 7.57 8.02 8.16 8.02 9.36C8.02 10.56 8.9 11.72 9.02 11.89C9.14 12.05 10.73 14.5 13.17 15.56C13.75 15.81 14.2 15.96 14.56 16.07C15.14 16.26 15.67 16.23 16.09 16.17C16.55 16.1 17.52 15.58 17.72 15.01C17.93 14.44 17.93 13.96 17.87 13.86C17.81 13.76 17.65 13.7 17.41 13.58C17.17 13.46 15.99 12.88 15.77 12.8C15.55 12.72 15.39 12.68 15.23 12.92C15.07 13.16 14.6 13.7 14.46 13.86C14.32 14.02 14.18 14.04 13.94 13.92C13.7 13.8 12.69 13.47 11.49 12.4C10.56 11.57 9.93 10.55 9.81 10.35C9.69 10.15 9.8 10.04 9.92 9.92C10.03 9.81 10.17 9.62 10.29 9.48C10.41 9.34 10.45 9.24 10.53 9.08C10.61 8.92 10.57 8.78 10.51 8.66C10.45 8.54 9.98 7.37 9.78 6.9C9.59 6.43 9.39 6.5 9.24 6.5C9.1 6.5 8.94 6.5 8.78 6.5L9.53 7.03Z"/>
+          </svg>
+          <span>WhatsApp</span> <strong>76 170 69 78</strong>
+        </a>
         <button class="action-btn" onclick="openWishlistDrawer()" title="Favoris">
           <svg viewBox="0 0 24 24">
             <path
@@ -160,14 +167,15 @@
         <ul>
           <li><a href="#">Guide des pointures</a></li>
           <li><a href="#">Livraison & Retours</a></li>
-          <li><a href="https://wa.me/" target="_blank">Commander sur WhatsApp</a></li>
+          <li><a href="https://wa.me/221761706978" target="_blank" style="color:#25D366; font-weight:700;">💬 Commander sur WhatsApp (76 170 69 78)</a></li>
           <li><a href="#">FAQ & Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Contact & Réseaux</h5>
-        <p>📷 Instagram: <strong>@BL_STORE</strong></p>
+        <p>📷 Instagram: <strong>@b_l_store_221</strong></p>
         <p>🛍️ Boutique: <strong>B&L STORE Dakar</strong></p>
+        <p>📱 WhatsApp Commandes: <a href="https://wa.me/221761706978" target="_blank" style="color:var(--gold-light); font-weight:700;">+221 76 170 69 78</a></p>
         <p>💬 Support direct WhatsApp 7j/7</p>
       </div>
     </div>
@@ -233,7 +241,11 @@
         <span>Total:</span>
         <span id="totalVal">0 FCFA</span>
       </div>
-      <button class="btn-checkout" onclick="openCheckoutModal()">Passer la commande ➔</button>
+      <button class="btn-checkout" onclick="openCheckoutModal()">Passer la commande sur WhatsApp ➔</button>
+      <button class="btn-cart-direct-wa" onclick="directCartWhatsAppOrder()">⚡ Envoi direct Panier sur WhatsApp</button>
+      <div class="cart-wa-notice">
+        <span>💬 Commandes traitées 7j/7 sur WhatsApp : <strong>+221 76 170 69 78</strong></span>
+      </div>
     </div>
   </div>
 
@@ -243,6 +255,13 @@
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
         <h3 style="color:var(--gold-light); font-size:22px;">Finaliser votre commande</h3>
         <button class="modal-close-btn" onclick="closeCheckoutModal()" style="position:static;">✕</button>
+      </div>
+      <div class="whatsapp-notice-banner">
+        <div class="notice-icon">💬</div>
+        <div class="notice-text">
+          <strong>Toutes les commandes sont finalisées sur WhatsApp :</strong><br>
+          Votre commande sera transmise directement au service client B&L STORE au <strong>+221 76 170 69 78</strong> avec tous vos articles et détails pour une confirmation rapide.
+        </div>
       </div>
       <form onsubmit="submitOrder(event)">
         <div class="form-group">
@@ -266,7 +285,7 @@
             <div class="pay-option" onclick="selectPayment('card', this)">💳 Carte Bancaire</div>
           </div>
         </div>
-        <button type="submit" class="btn-checkout" style="margin-top:20px;">Confirmer la commande sur WhatsApp
+        <button type="submit" class="btn-checkout" style="margin-top:20px; background:#25D366; color:#0b0b0e;">Confirmer et envoyer sur WhatsApp (+221 76 170 69 78)
           ➔</button>
       </form>
     </div>
