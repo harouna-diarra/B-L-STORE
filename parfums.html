@@ -26,7 +26,7 @@
   <!-- Header -->
   <header>
     <div class="header-container">
-      <a href="site.html" class="brand-logo-link">
+      <a href="index.html" class="brand-logo-link">
         <div class="brand-badge">
           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M25 25 H50 C65 25 65 45 50 45 C65 45 65 75 25 75 H50" stroke="url(#goldGrad)" stroke-width="8"
@@ -50,7 +50,7 @@
 
       <!-- Navigation Links -->
       <nav class="main-nav">
-        <a href="site.html" class="nav-link">Accueil</a>
+        <a href="index.html" class="nav-link">Accueil</a>
         <a href="chaussures.html" class="nav-link">👟 Chaussures</a>
         <a href="sandales.html" class="nav-link">🩴 Sandales</a>
         <a href="parfums.html" class="nav-link active">✨ Parfums</a>
@@ -93,7 +93,7 @@
   <div class="page-hero">
     <div class="page-hero-container">
       <div class="breadcrumb">
-        <a href="site.html">Accueil</a>
+        <a href="index.html">Accueil</a>
         <span>›</span>
         <span style="color:var(--gold-light);">Parfums & Fragrances</span>
       </div>
@@ -198,7 +198,8 @@
         </div>
 
         <div class="modal-cta-group">
-          <button class="btn-gold" style="flex:1; justify-content:center;" onclick="addModalItemToCart()">Ajouter au panier</button>
+          <button class="btn-gold" style="flex:1; justify-content:center;" onclick="addModalItemToCart()">Ajouter au
+            panier</button>
         </div>
       </div>
     </div>
@@ -261,7 +262,8 @@
             <div class="pay-option" onclick="selectPayment('card', this)">💳 Carte Bancaire</div>
           </div>
         </div>
-        <button type="submit" class="btn-checkout" style="margin-top:20px;">Confirmer la commande sur WhatsApp ➔</button>
+        <button type="submit" class="btn-checkout" style="margin-top:20px;">Confirmer la commande sur WhatsApp
+          ➔</button>
       </form>
     </div>
   </div>
@@ -280,9 +282,9 @@
       const grid = document.getElementById('parfumsGrid');
       let filtered = parfumsList.filter(p => {
         const matchesSubcat = (currentSubcat === 'all') || (p.subcat === currentSubcat);
-        const matchesSearch = p.name.toLowerCase().includes(searchQuery) || 
-                              (p.note && p.note.toLowerCase().includes(searchQuery)) ||
-                              (p.tag && p.tag.toLowerCase().includes(searchQuery));
+        const matchesSearch = p.name.toLowerCase().includes(searchQuery) ||
+          (p.note && p.note.toLowerCase().includes(searchQuery)) ||
+          (p.tag && p.tag.toLowerCase().includes(searchQuery));
         return matchesSubcat && matchesSearch;
       });
 
