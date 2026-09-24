@@ -267,11 +267,13 @@ function openCartDrawer() {
   updateCartUI();
   const drawer = document.getElementById('cartDrawer');
   if (drawer) drawer.classList.add('active');
+  document.body.classList.add('cart-open');
 }
 
 function closeCartDrawer() {
   const drawer = document.getElementById('cartDrawer');
   if (drawer) drawer.classList.remove('active');
+  document.body.classList.remove('cart-open');
 }
 
 // Favoris (Wishlist)
